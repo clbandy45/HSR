@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Drills</title>
+    <style>
+        :root{
+            --pwidth: 800px;
+            --numsize: 1.5em;
+        }
+
+        * {
+            /* border: 2px solid black; */
+        }
+
+        body{
+            width: var(--pwidth);
+        }
+
+        .header{
+            text-align: center;
+        }
+
+        .problems-box{
+            display: grid;
+            grid-template-columns:  20% 20% 20% 20% 20%;
+            width: var(--pwidth);
+        }
+
+        .individual-problem{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bottom-num, .top-num{
+            font-size: var(--numsize);
+        }
+
+        .top-num{
+            text-align: right;
+            height: var(--numsize);
+        }
+
+        .bottom-box{
+            /* border: 2px solid green; */
+            display: flex;
+            justify-content: end;
+        }
+
+        .operator{
+            /* border: 2px solid pink; */
+            font-size: var(--numsize);
+        }
+
+        .bottom-num{
+            padding-left: 70%;
+            /* border: 2px solid yellow; */
+            height: var(--numsize);
+        }
+
+        .number-selection{
+            display: grid;
+            grid-template-columns: repeat(10, auto);
+            justify-content: space-around;
+        }
+
+        .num-select{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            margin: 1px;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25rem;
+            border: 2px solid black;
+        }
+
+        .op-select.active ,.num-select.active {
+            background-color: lightblue;
+        }
+
+        .operator-selection{
+            display: flex;
+        }
+        .op-select{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            margin: 1px;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25rem;
+            border: 2px solid black;
+        }
+
+        .answer-box{
+            height: 3.5rem;
+        }
+
+        .selections{
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+
+        .instructions-box{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .generate{
+            margin-right: 10%;
+            height: 3rem;
+            width: 10rem;
+            font-size: 1.5rem;
+        }
+
+        .equals-line{
+            border: 2px solid black;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .individual-problem{
+            /* border: 2px solid blue; */
+            margin-top: 5px;
+            padding-right: 4px;
+            padding-left: 4px;
+            width: 80%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header"><h1>Math Drills!</h1></div>
+    <div class="instructions-box">
+        <div class="instructions">
+            Step 1: Select a constant number to be the top of each math problem <br>
+            Step 2: Select an operator <br>
+            Step 3: Hit generate to generate the bottom numbers <br>
+            Step 4: Print the page!
+        </div>
+        <button class="generate">Generate!</button>
+    </div>
+    <div class="selections">
+        <div class="number-selection">
+            <div class="num-select">1</div>
+            <div class="num-select">2</div>
+            <div class="num-select">3</div>
+            <div class="num-select">4</div>
+            <div class="num-select">5</div>
+            <div class="num-select">6</div>
+            <div class="num-select">7</div>
+            <div class="num-select">8</div>
+            <div class="num-select">9</div>
+            <div class="num-select">10</div>
+            <div class="num-select">11</div>
+            <div class="num-select">12</div>
+            <div class="num-select">13</div>
+            <div class="num-select">14</div>
+            <div class="num-select">15</div>
+            <div class="num-select">16</div>
+            <div class="num-select">17</div>
+            <div class="num-select">18</div>
+            <div class="num-select">19</div>
+            <div class="num-select">20</div>
+        </div>
+        <div class="operator-selection">
+            <div class="op-select">+</div>
+            <div class="op-select">-</div>
+        </div>
+    </div>
+    <div class="placeholder"></div>
+    <div class="problems-box">
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+        <div class="individual-problem">
+            <div class="top-num"></div>
+            <div class="bottom-box">
+                <div class="operator"></div>
+                <div class="bottom-num"></div>
+            </div>
+            <div class="equals-line"></div>
+            <div class="answer-box"></div>
+        </div>
+    </div>
+
+    <script>
+        let selectedNumber = 0;
+        let selectedOperator;
+
+        const numberSelectArray = document.querySelectorAll(".num-select");
+        const operatorSelectArray = document.querySelectorAll(".op-select");
+        const topNumberArray = document.querySelectorAll(".top-num");
+        const bottomNumberArray = document.querySelectorAll(".bottom-num");
+        const operatorArray = document.querySelectorAll(".operator");
+        const generateButton = document.querySelector(".generate");
+
+        console.log(generateButton);
+
+        numberSelectArray.forEach(function(numButton) {
+            numButton.addEventListener('click', function(event) {
+                numberSelectArray.forEach(btn => btn.classList.remove('active'))
+                selectedNumber = event.target.textContent;
+                this.classList.add('active');
+                topNumberArray.forEach(top => top.innerHTML = selectedNumber);
+            });
+        });
+
+        operatorSelectArray.forEach(function(opButton) {
+            opButton.addEventListener('click', function(event) {
+                operatorSelectArray.forEach(btn => btn.classList.remove('active'))
+                selectedOperator = event.target.textContent;
+                this.classList.add('active');
+                operatorArray.forEach(op => op.innerHTML = selectedOperator);
+                console.log(selectedOperator);
+            });
+        });
+
+        generateButton.addEventListener('click', function() {
+            if (selectedOperator == "+") {
+                for (i = 0; i <= bottomNumberArray.length; i++) {
+                    let randomNum = Math.floor(Math.random() * 50) + 1;
+                    bottomNumberArray[i].innerHTML = randomNum;
+                    }
+                };
+                
+            if (selectedOperator == "-") {
+                for (i = 0; i <= bottomNumberArray.length; i++) {
+                    let randomNum = Math.floor(Math.random() * selectedNumber) + 1;
+                    bottomNumberArray[i].innerHTML = randomNum;
+                    }
+                };
+            });
+    </script>
+    
+</body>
+</html>
