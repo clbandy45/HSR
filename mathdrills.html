@@ -124,9 +124,10 @@
     <div class="header"><h1>Math Drills!</h1></div>
     <div class="instructions-box">
         <div class="instructions">
-            Step 1: Select a constant number to be the top of each math problem <br>
-            Step 2: Select an operator <br>
-            Step 3: Print the page!
+            Step 1: Select a batch of numebrs to pick from <br>
+            Step 2: Select a constant number to be the top of each math problem <br>
+            Step 3: Select an operator <br>
+            Step 4: Print the page!
         </div>
         <button id="oneToTwenty" class="options-button">1-20</button>
         <button id="evens" class="options-button">Evens 2-40</button>
@@ -410,6 +411,7 @@
         const evensButton = document.getElementById("evens");
         const mixBoxSelect = document.querySelectorAll(".A");
         const mixBoxRand = document.querySelectorAll(".B");
+        const optionsButtons = document.querySelectorAll(".options-button");
 
         const oneToTwentyArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
         const evensArray = [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40];
@@ -435,29 +437,27 @@
         const sBox = document.getElementById("numboxS");
         const tBox = document.getElementById("numboxT");
 
-
+        optionsButtons.forEach(function(button){
+            button.addEventListener('click',function(){
+                numberSelectArray.forEach(btn => btn.classList.remove('active'));
+                operatorSelectArray.forEach(btn => btn.classList.remove('active'));
+                topNumberArray.forEach(top => top.innerHTML = '');
+                bottomNumberArray.forEach(top => top.innerHTML = '');
+                operatorArray.forEach(top => top.innerHTML = '');
+                selectedNumber = 0;
+            })
+        })
 
         oneToTwentyButton.addEventListener('click', function(button){
             numberOptions = oneToTwentyArray;
             changeButtons();
-
-            numberSelectArray.forEach(btn => btn.classList.remove('active'));
-            operatorSelectArray.forEach(btn => btn.classList.remove('active'));
-            topNumberArray.forEach(top => top.innerHTML = '');
-            bottomNumberArray.forEach(top => top.innerHTML = '');
-            operatorArray.forEach(top => top.innerHTML = '');
         });
 
         evensButton.addEventListener('click', function(button){
             numberOptions = evensArray;
             changeButtons();
-
-            numberSelectArray.forEach(btn => btn.classList.remove('active'));
-            operatorSelectArray.forEach(btn => btn.classList.remove('active'));
-            topNumberArray.forEach(top => top.innerHTML = '');
-            bottomNumberArray.forEach(top => top.innerHTML = '');
-            operatorArray.forEach(top => top.innerHTML = '');
         });
+
 
         function changeButtons(){
             aBox.innerHTML = numberOptions[0];
@@ -499,7 +499,13 @@
                 operatorSelectArray.forEach(btn => btn.classList.remove('active'))
                 selectedOperator = event.target.textContent;
                 this.classList.add('active');
+
+                if(selectedNumber == 0) {
+                    selectedOperator = '';
+                }
+
                 operatorArray.forEach(op => op.innerHTML = selectedOperator);
+            
 
             if (selectedOperator == "+") {
                 for (i = 0; i <= mixBoxRand.length; i++) {
@@ -515,7 +521,6 @@
                     bottomNumberArray[i].innerHTML = randomNum;
                     topNumberArray.forEach(top => top.innerHTML = selectedNumber);
                     }
-
                 };
             });
         });
