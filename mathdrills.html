@@ -124,13 +124,16 @@
     <div class="header"><h1>Math Drills!</h1></div>
     <div class="instructions-box">
         <div class="instructions">
-            Step 1: Select a batch of numebrs to pick from <br>
-            Step 2: Select a constant number to be the top of each math problem <br>
+            Step 1: Select a batch of numbers to pick from <br>
+            Step 2: Select a number that will be a constant in each problem <br>
             Step 3: Select an operator <br>
             Step 4: Print the page!
         </div>
         <button id="oneToTwenty" class="options-button">1-20</button>
         <button id="evens" class="options-button">Evens 2-40</button>
+        <button id="odds" class="options-button">Odds 3-41</button>
+        <button id="threes" class="options-button">By 3s</button>
+        <button id="fives" class="options-button">By 5s</button>
         <div>
             <ul>
                 <li>each time you select the "+" operator it will pick a random number between 1-50 to add</li>
@@ -407,14 +410,34 @@
         const bottomNumberArray = document.querySelectorAll(".bottom-num");
         const operatorArray = document.querySelectorAll(".operator");
         const generateButton = document.querySelector(".generate");
-        const oneToTwentyButton = document.getElementById("oneToTwenty");
-        const evensButton = document.getElementById("evens");
         const mixBoxSelect = document.querySelectorAll(".A");
         const mixBoxRand = document.querySelectorAll(".B");
         const optionsButtons = document.querySelectorAll(".options-button");
 
-        const oneToTwentyArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-        const evensArray = [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40];
+        const oneToTwentyButton = document.getElementById("oneToTwenty");
+        const evensButton = document.getElementById("evens");
+        const oddsButton = document.getElementById("odds");
+        const threesButton = document.getElementById("threes");
+        const fivesButton = document.getElementById("fives");
+    
+        let x = 21;
+        
+        let oneToTwentyArray = [];
+        let evensArray = [];
+        let oddsArray = [];
+        let byThreesArray = [];
+        let byFivesArray = [];
+
+        for (let i = 1; i < x; i++) {
+            oneToTwentyArray.push(i);
+            evensArray.push(i*2);
+            byThreesArray.push(i*3);
+            byFivesArray.push(i*5);
+        }
+
+        for (let i = 3; i <= 41; i += 2) {
+            oddsArray.push(i);
+        }
 
         const aBox = document.getElementById("numboxA");
         const bBox = document.getElementById("numboxB");
@@ -458,6 +481,20 @@
             changeButtons();
         });
 
+        oddsButton.addEventListener('click', function(button){
+            numberOptions = oddsArray;
+            changeButtons();
+        })
+
+        threesButton.addEventListener('click', function(button){
+            numberOptions = byThreesArray;
+            changeButtons();
+        })
+        
+        fivesButton.addEventListener('click', function(button){
+            numberOptions = byFivesArray;
+            changeButtons();
+        })
 
         function changeButtons(){
             aBox.innerHTML = numberOptions[0];
@@ -508,7 +545,7 @@
             
 
             if (selectedOperator == "+") {
-                for (i = 0; i <= mixBoxRand.length; i++) {
+                for (let i = 0; i <= mixBoxRand.length; i++) {
                     let randomNum = Math.floor(Math.random() * 50) + 1;
                     mixBoxRand[i].innerHTML = randomNum;
                     mixBoxSelect.forEach(A => A.innerHTML = selectedNumber);
@@ -516,7 +553,7 @@
                 };
             
             if (selectedOperator == "-") {
-                for (i = 0; i <= bottomNumberArray.length; i++) {
+                for (let i = 0; i <= bottomNumberArray.length; i++) {
                     let randomNum = Math.floor(Math.random() * selectedNumber) + 1;
                     bottomNumberArray[i].innerHTML = randomNum;
                     topNumberArray.forEach(top => top.innerHTML = selectedNumber);
