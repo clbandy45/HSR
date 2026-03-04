@@ -128,6 +128,8 @@
             Step 2: Select an operator <br>
             Step 3: Print the page!
         </div>
+        <button id="oneToTwenty" class="options-button">1-20</button>
+        <button id="evens" class="options-button">Evens 2-40</button>
         <div>
             <ul>
                 <li>each time you select the "+" operator it will pick a random number between 1-50 to add</li>
@@ -138,26 +140,26 @@
     </div>
     <div class="selections">
         <div class="number-selection">
-            <div class="num-select">1</div>
-            <div class="num-select">2</div>
-            <div class="num-select">3</div>
-            <div class="num-select">4</div>
-            <div class="num-select">5</div>
-            <div class="num-select">6</div>
-            <div class="num-select">7</div>
-            <div class="num-select">8</div>
-            <div class="num-select">9</div>
-            <div class="num-select">10</div>
-            <div class="num-select">11</div>
-            <div class="num-select">12</div>
-            <div class="num-select">13</div>
-            <div class="num-select">14</div>
-            <div class="num-select">15</div>
-            <div class="num-select">16</div>
-            <div class="num-select">17</div>
-            <div class="num-select">18</div>
-            <div class="num-select">19</div>
-            <div class="num-select">20</div>
+            <div class="num-select" id="numboxA">1</div>
+            <div class="num-select" id="numboxB">2</div>
+            <div class="num-select" id="numboxC">3</div>
+            <div class="num-select" id="numboxD">4</div>
+            <div class="num-select" id="numboxE">5</div>
+            <div class="num-select" id="numboxF">6</div>
+            <div class="num-select" id="numboxG">7</div>
+            <div class="num-select" id="numboxH">8</div>
+            <div class="num-select" id="numboxI">9</div>
+            <div class="num-select" id="numboxJ">10</div>
+            <div class="num-select" id="numboxK">11</div>
+            <div class="num-select" id="numboxL">12</div>
+            <div class="num-select" id="numboxM">13</div>
+            <div class="num-select" id="numboxN">14</div>
+            <div class="num-select" id="numboxO">15</div>
+            <div class="num-select" id="numboxP">16</div>
+            <div class="num-select" id="numboxQ">17</div>
+            <div class="num-select" id="numboxR">18</div>
+            <div class="num-select" id="numboxS">19</div>
+            <div class="num-select" id="numboxT">20</div>
         </div>
         <div class="operator-selection">
             <div class="op-select">+</div>
@@ -396,6 +398,7 @@
     <script>
         let selectedNumber = 0;
         let selectedOperator;
+        let numberOptions;
 
         const numberSelectArray = document.querySelectorAll(".num-select");
         const operatorSelectArray = document.querySelectorAll(".op-select");
@@ -403,15 +406,91 @@
         const bottomNumberArray = document.querySelectorAll(".bottom-num");
         const operatorArray = document.querySelectorAll(".operator");
         const generateButton = document.querySelector(".generate");
+        const oneToTwentyButton = document.getElementById("oneToTwenty");
+        const evensButton = document.getElementById("evens");
+        const mixBoxSelect = document.querySelectorAll(".A");
+        const mixBoxRand = document.querySelectorAll(".B");
 
-        console.log(generateButton);
+        const oneToTwentyArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+        const evensArray = [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40];
+
+        const aBox = document.getElementById("numboxA");
+        const bBox = document.getElementById("numboxB");
+        const cBox = document.getElementById("numboxC");
+        const dBox = document.getElementById("numboxD");
+        const eBox = document.getElementById("numboxE");
+        const fBox = document.getElementById("numboxF");
+        const gBox = document.getElementById("numboxG");
+        const hBox = document.getElementById("numboxH");
+        const iBox = document.getElementById("numboxI");
+        const jBox = document.getElementById("numboxJ");
+        const kBox = document.getElementById("numboxK");
+        const lBox = document.getElementById("numboxL");
+        const mBox = document.getElementById("numboxM");
+        const nBox = document.getElementById("numboxN");
+        const oBox = document.getElementById("numboxO");
+        const pBox = document.getElementById("numboxP");
+        const qBox = document.getElementById("numboxQ");
+        const rBox = document.getElementById("numboxR");
+        const sBox = document.getElementById("numboxS");
+        const tBox = document.getElementById("numboxT");
+
+
+
+        oneToTwentyButton.addEventListener('click', function(button){
+            numberOptions = oneToTwentyArray;
+            changeButtons();
+
+            numberSelectArray.forEach(btn => btn.classList.remove('active'));
+            operatorSelectArray.forEach(btn => btn.classList.remove('active'));
+            topNumberArray.forEach(top => top.innerHTML = '');
+            bottomNumberArray.forEach(top => top.innerHTML = '');
+            operatorArray.forEach(top => top.innerHTML = '');
+        });
+
+        evensButton.addEventListener('click', function(button){
+            numberOptions = evensArray;
+            changeButtons();
+
+            numberSelectArray.forEach(btn => btn.classList.remove('active'));
+            operatorSelectArray.forEach(btn => btn.classList.remove('active'));
+            topNumberArray.forEach(top => top.innerHTML = '');
+            bottomNumberArray.forEach(top => top.innerHTML = '');
+            operatorArray.forEach(top => top.innerHTML = '');
+        });
+
+        function changeButtons(){
+            aBox.innerHTML = numberOptions[0];
+            bBox.innerHTML = numberOptions[1];
+            cBox.innerHTML = numberOptions[2];
+            dBox.innerHTML = numberOptions[3];
+            eBox.innerHTML = numberOptions[4];
+            fBox.innerHTML = numberOptions[5];
+            gBox.innerHTML = numberOptions[6];
+            hBox.innerHTML = numberOptions[7];
+            iBox.innerHTML = numberOptions[8];
+            jBox.innerHTML = numberOptions[9];
+            kBox.innerHTML = numberOptions[10];
+            lBox.innerHTML = numberOptions[11];
+            mBox.innerHTML = numberOptions[12];
+            nBox.innerHTML = numberOptions[13];
+            oBox.innerHTML = numberOptions[14];
+            pBox.innerHTML = numberOptions[15];
+            qBox.innerHTML = numberOptions[16];
+            rBox.innerHTML = numberOptions[17];
+            sBox.innerHTML = numberOptions[18];
+            tBox.innerHTML = numberOptions[19];
+        };
 
         numberSelectArray.forEach(function(numButton) {
             numButton.addEventListener('click', function(event) {
                 numberSelectArray.forEach(btn => btn.classList.remove('active'))
                 selectedNumber = event.target.textContent;
                 this.classList.add('active');
-                topNumberArray.forEach(top => top.innerHTML = selectedNumber);
+                topNumberArray.forEach(top => top.innerHTML = '');
+                bottomNumberArray.forEach(top => top.innerHTML = '');
+                operatorArray.forEach(top => top.innerHTML = '');
+                operatorSelectArray.forEach(btn => btn.classList.remove('active'))
             });
         });
 
@@ -421,12 +500,12 @@
                 selectedOperator = event.target.textContent;
                 this.classList.add('active');
                 operatorArray.forEach(op => op.innerHTML = selectedOperator);
-                console.log(selectedOperator);
 
             if (selectedOperator == "+") {
-                for (i = 0; i <= bottomNumberArray.length; i++) {
+                for (i = 0; i <= mixBoxRand.length; i++) {
                     let randomNum = Math.floor(Math.random() * 50) + 1;
-                    bottomNumberArray[i].innerHTML = randomNum;
+                    mixBoxRand[i].innerHTML = randomNum;
+                    mixBoxSelect.forEach(A => A.innerHTML = selectedNumber);
                     }
                 };
             
@@ -434,7 +513,9 @@
                 for (i = 0; i <= bottomNumberArray.length; i++) {
                     let randomNum = Math.floor(Math.random() * selectedNumber) + 1;
                     bottomNumberArray[i].innerHTML = randomNum;
+                    topNumberArray.forEach(top => top.innerHTML = selectedNumber);
                     }
+
                 };
             });
         });
